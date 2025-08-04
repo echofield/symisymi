@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer utilities {
+  @keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+  }
+
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+}
+
+/* Custom styles from our previous versions */
+.loader { width: 80px; height: 50px; position: relative; }
+.loader-text {
+    position: absolute; top: 0; padding: 0; margin: 0; color: #C8B6FF;
+    animation: text_713 3.5s ease both infinite; font-size: .8rem;
+    letter-spacing: 1px; font-family: 'IBM Plex Mono', monospace;
+}
+.load {
+    background-color: #9A79FF; border-radius: 50px; display: block;
+    height: 16px; width: 16px; bottom: 0; position: absolute;
+    transform: translateX(64px); animation: loading_713 3.5s ease both infinite;
+}
+.load::before {
+    position: absolute; content: ""; width: 100%; height: 100%;
+    background-color: #D1C2FF; border-radius: inherit;
+    animation: loading2_713 3.5s ease both infinite;
+}
+@keyframes text_713 { 0% { letter-spacing: 1px; transform: translateX(0px); } 40% { letter-spacing: 2px; transform: translateX(26px); } 80% { letter-spacing: 1px; transform: translateX(32px); } 90% { letter-spacing: 2px; transform: translateX(0px); } 100% { letter-spacing: 1px; transform: translateX(0px); } }
+@keyframes loading_713 { 0% { width: 16px; transform: translateX(0px); } 40% { width: 100%; transform: translateX(0px); } 80% { width: 16px; transform: translateX(64px); } 90% { width: 100%; transform: translateX(0px); } 100% { width: 16px; transform: translateX(0px); } }
+@keyframes loading2_713 { 0% { transform: translateX(0px); width: 16px; } 40% { transform: translateX(0%); width: 80%; } 80% { width: 100%; transform: translateX(0px); } 90% { width: 80%; transform: translateX(15px); } 100% { transform: translateX(0px); width: 16px; } }
+
+.form-input {
+    @apply w-full rounded-lg border border-gray-300 bg-white p-3.5 text-base text-gray-900 transition-all placeholder:text-gray-400 focus:border-purple-500 focus:outline-none focus:ring-4 focus:ring-purple-500/20;
+}
+
+.btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-7 py-3 text-sm font-semibold text-gray-900 transition-all hover:bg-gray-100;
+}
+.btn-primary {
+    @apply border-purple-600 bg-purple-600 text-white hover:bg-purple-700;
+}

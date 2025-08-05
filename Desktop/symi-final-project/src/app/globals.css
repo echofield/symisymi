@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- Base Layer --- */
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+/* --- Components Layer --- */
+@layer components {
+  /* --- Buttons --- */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200 ease-in-out hover:scale-[1.03];
+  }
+  .btn-primary {
+    @apply border-purple-600 bg-purple-600 text-white shadow-lg shadow-purple-500/20 hover:bg-purple-700;
+  }
+  .btn:disabled, .btn-primary:disabled {
+    @apply opacity-50 cursor-not-allowed hover:scale-100;
+  }
+  .btn-primary:disabled {
+    @apply hover:bg-purple-600;
+  }
+  .nav-button {
+    @apply flex items-center gap-2 transition-transform hover:scale-105;
+  }
+
+  /* --- Form Elements --- */
+  .form-input, .form-textarea {
+    @apply w-full rounded-lg border border-gray-300 bg-white/70 p-3.5 text-base text-gray-900 transition-all placeholder:text-gray-400 focus:border-purple-500 focus:outline-none focus:ring-4 focus:ring-purple-500/20 caret-purple-600; /* <-- Bug fix is here */
+  }
+  .form-textarea {
+    @apply min-h-[100px] resize-none;
+  }
+  input[type="email"].form-input {
+    @apply lowercase;
+  }
+  .radio-option {
+    @apply flex items-center w-full cursor-pointer bg-white border-2 border-gray-200 rounded-lg p-4 text-base text-gray-700 transition-all duration-200 hover:border-purple-400 hover:shadow-sm;
+    min-height: 60px;
+    white-space: normal;
+  }
+  .radio-option.selected {
+    @apply border-purple-600 bg-purple-50 shadow-sm;
+  }
+
+  /* --- Audit UI --- */
+  .audit-container {
+    @apply w-full max-w-2xl mx-auto flex items-center justify-center min-h-screen;
+  }
+  .progress-bar {
+    @apply w-full bg-gray-200 rounded-full h-2 mb-6 overflow-hidden;
+  }
+  .progress-fill {
+    @apply bg-gradient-to-r from-purple-500 to-purple-600 h-full rounded-full transition-all duration-500 ease-out;
+  }
+  .question-text {
+    @apply text-xl md:text-2xl font-bold text-gray-800;
+  }
+  .question-counter {
+    @apply font-mono text-sm text-gray-500;
+  }
+
+  /* --- Pricing Cards --- */
+  .price-card {
+    @apply bg-white/60 p-8 rounded-2xl border border-white/30 shadow-lg flex flex-col;
+    backdrop-filter: blur(20px);
+  }
+  .price-card.recommended {
+    @apply border-2 border-purple-500 relative ring-2 ring-purple-300;
+  }
+  .price-card.recommended::before {
+    content: '⭐ Recommended';
+    @apply absolute -top-4 right-5 bg-gradient-to-r from-purple-500 to-teal-500 text-white text-xs font-semibold px-3 py-1 rounded-full;
+  }
+  .feature-item {
+    @apply flex items-start text-gray-600;
+  }
+  .checkmark {
+    @apply w-5 h-5 mr-3 text-purple-500 flex-shrink-0 mt-0.5;
+  }
+
+  /* --- FAQ Section --- */
+  .faq-item {
+     @apply bg-white/60 border border-white/30 backdrop-blur-lg rounded-2xl p-1 shadow-md transition;
+  }
+  .faq-item summary {
+    @apply flex justify-between items-center cursor-pointer p-5 font-medium text-gray-800 list-none;
+  }
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+  .faq-icon {
+    transition: transform 0.3s ease;
+  }
+  .faq-item[open] .faq-icon {
+    transform: rotate(180deg);
+  }
+  .faq-content {
+    @apply px-5 pb-5 pt-1 text-gray-600 leading-relaxed;
+  }
+}
+
+/* --- Utilities Layer --- */
+@layer utilities {
+  /* --- Animations --- */
+  @keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+  }
+  .animate-blob { animation: blob 7s infinite; }
+  .animation-delay-2000 { animation-delay: -2s; }
+  .animation-delay-4000 { animation-delay: -4s; }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .blueprint-reveal { animation: fadeInUp 0.8s ease-out; }
+
+  @keyframes questionFade {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  .question-fade-in { animation: questionFade 0.5s ease-out; }
+
+  /* --- Loading Animation --- */
+  .loader { width: 80px; height: 50px; position: relative; }
+  .loader-text {
+    position: absolute; top: 0; padding: 0; margin: 0; color: #C8B6FF;
+    animation: text_713 3.5s ease both infinite; font-size: .8rem;
+    letter-spacing: 1px; font-family: 'IBM Plex Mono', monospace;
+  }
+  .load {
+    background-color: #9A79FF; border-radius: 50px; display: block;
+    height: 16px; width: 16px; bottom: 0; position: absolute;
+    transform: translateX(64px); animation: loading_713 3.5s ease both infinite;
+  }
+  .load::before {
+    position: absolute; content: ""; width: 100%; height: 100%;
+    background-color: #D1C2FF; border-radius: inherit;
+    animation: loading2_713 3.5s ease both infinite;
+  }
+  @keyframes text_713 { 0% { letter-spacing: 1px; transform: translateX(0px); } 40% { letter-spacing: 2px; transform: translateX(26px); } 80% { letter-spacing: 1px; transform: translateX(32px); } 90% { letter-spacing: 2px; transform: translateX(0px); } 100% { letter-spacing: 1px; transform: translateX(0px); } }
+  @keyframes loading_713 { 0% { width: 16px; transform: translateX(0px); } 40% { width: 100%; transform: translateX(0px); } 80% { width: 16px; transform: translateX(64px); } 90% { width: 100%; transform: translateX(0px); } 100% { width: 16px; transform: translateX(0px); } }
+  @keyframes loading2_713 { 0% { transform: translateX(0px); width: 16px; } 40% { transform: translateX(0%); width: 80%; } 80% { width: 100%; transform: translateX(0px); } 90% { width: 80%; transform: translateX(15px); } 100% { transform: translateX(0px); width: 16px; } }
+
+  /* --- Responsive Adjustments --- */
+  @media (max-width: 640px) {
+    .form-input, .radio-option {
+      @apply text-base p-3;
+    }
+    .btn {
+      @apply px-5 py-2.5 text-sm;
+    }
+    .question-text {
+      @apply text-lg;
+    }
+  }
+}

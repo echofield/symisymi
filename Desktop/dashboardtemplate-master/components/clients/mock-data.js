@@ -1,0 +1,38 @@
+export const clients = [
+  {
+    id: 1,
+    name: 'Innovate Inc.',
+    status: 'On Track',
+    avatar: 'https://i.pravatar.cc/150?u=innovate-inc',
+    progress: 85,
+    lastContact: '2025-08-04',
+    plan: 'Q3 Growth Strategy',
+  },
+  {
+    id: 2,
+    name: 'Apex Solutions',
+    status: 'At Risk',
+    avatar: 'https://i.pravatar.cc/150?u=apex-solutions',
+    progress: 40,
+    lastContact: '2025-07-28',
+    plan: 'Market Entry',
+  },
+  {
+    id: 3,
+    name: 'Quantum Leap',
+    status: 'On Track',
+    avatar: 'https://i.pravatar.cc/150?u=quantum-leap',
+    progress: 95,
+    lastContact: '2025-08-05',
+    plan: 'Product Launch',
+  },
+  {
+    id: 4,
+    name: 'Stellar Corp',
+    status: 'New',
+    avatar: 'https://i.pravatar.cc/150?u=stellar-corp',
+    progress: 10,
+    lastContact: '2025-08-06',
+    plan: 'Onboarding',
+  },
+];
